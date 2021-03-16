@@ -1,0 +1,4 @@
+/*style the cell of a PTCS web component grid using ::part selector
+ptcs-grid::part(core-grid)::part(cell) {
+  padding-left: 24px !important;
+}
