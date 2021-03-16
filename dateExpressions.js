@@ -5,10 +5,10 @@ Output = [(PBdate.getMonth() + 1),
     ].join('/');
     
 // takes two JS date objects startDate and endDate and returns a String H:MM AM - H:MM PM
-let startTime = startDate.getHours() > 12 ?
-    startDate.getHours() - 12 + ':' + startDate.getMinutes() + ' PM':
-startDate.getHours() + ':' + startDate.getMinutes() + ' AM';
-let endTime = endDate.getHours() > 12 ?
-    endDate.getHours() - 12 + ':' + endDate.getMinutes() + ' PM':
-endDate.getHours() + ':' + endDate.getMinutes() + ' AM';
-Output = startTime + ' - ' + endTime;
+let startHour = pbStartDate.getHours() % 12 || 12;
+let endHour = pbEndDate.getHours() % 12 || 12;
+let startAmPm = pbStartDate.getHours() > 12 ? 'PM' : 'AM';
+let endAmPm = pbEndDate.getHours() > 12 ? 'PM' : 'AM';
+let startTimeString = [startHour,('0'+pbStartDate.getMinutes().toString()).substr(-2)].join(':');
+let stopTimeString = [endHour,('0'+pbEndDate.getMinutes().toString()).substr(-2)].join(':');
+Output = `${startTimeString} ${startAmPm} - ${stopTimeString} ${endAmPm}`;
